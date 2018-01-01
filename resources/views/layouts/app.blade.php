@@ -296,17 +296,20 @@
 
 
 
+
             <li title="Chats">
                 <a href="index.html#">
                     <span class="menu_icon"><i class="material-icons md-24">work</i></span>
                     <span class="menu_title">Tenders</span>
                 </a>
                 <ul>
-                    <li><a href="{{route("make_tender")}}">Create Tender</a></li>
-                    <li><a href="{{route("view_tenders")}}">View Tenders</a></li>
+                    <li><a href="{{route("tender.create")}}">Create Tender</a></li>
+                    <li><a href="{{route("tender.index")}}">View Tenders</a></li>
                 </ul>
 
             </li>
+
+
 
             <li title="Chats">
                 <a href="index.html#">
@@ -314,8 +317,8 @@
                     <span class="menu_title">Opportunities</span>
                 </a>
                 <ul>
-                    <li><a href="page_chat.html">Create opportunity</a></li>
-                    <li><a href="page_chat_small.html">View Opportunities</a></li>
+                    <li><a href="{{route("opportunities.create")}}">Create opportunity</a></li>
+                    <li><a href="{{route("opportunities.index")}}">View Opportunities</a></li>
                 </ul>
 
             </li>

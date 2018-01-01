@@ -37,9 +37,8 @@
     <div class="md-card">
         <div class="md-card-content large-padding">
 
-            <form  novalidate id="wizard_advanced_form" class="uk-form-stacked"   action="{{route("save_tender")}}" method="post" accept-charset="utf-8"  name="updateForm"  v-form>
-
-                {!!  csrf_field() !!}
+            <form  novalidate id="wizard_advanced_form" class="uk-form-stacked"   action="{{route("tender.store")}}" method="post" accept-charset="utf-8"  name="updateForm"  v-form>
+                @csrf
                 <div data-uk-observe="" id="wizard_advanced" role="application" class="wizard clearfix">
                     <div class="steps clearfix">
                         <ul role="tablist">
@@ -67,10 +66,11 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Type of tender :</label><input type="text" id="type" name="type" class="md-input"   required="required"     v-model="type"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Osikani :</label><input type="text" id="type" name="type" class="md-input"   required="required"     v-model="type"  v-form-ctrl><span class="md-input-bar"></span></div>
                                         <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.type.$error.required">type is required</p>
                                     </div>
                                 </div>
+
 
                                 <div class="parsley-row">
                                     <div class="uk-input-group">

@@ -42,12 +42,21 @@ Route::get('/home', 'HomeController@index')->name('home');
     /*
      * Tender routes
      */
-    Route::get('/tender/create', 'TenderController@create')->name('make_tender');
-    Route::get('/tender/{{tender}}/show', 'TenderController@show')->name('show_tender');
-    Route::get('/tender/{{tender}}/edit', 'TenderController@edit')->name('edit_tender');
-    Route::post('/tender_update', 'TenderController@update')->name('update_tender');
-    Route::post('/tender/save', 'TenderController@save')->name('save_tender');
-    Route::get('/tender/all', 'TenderController@viewTenders')->name('view_tenders');
-    Route::delete('/tender/{{tender}}/delete', 'TenderController@destroy')->name('delete_tender');
+
+    Route::resource('tender','TenderController');
+
+
+    /*
+   * Opportunities routes
+   */
+
+    Route::resource('opportunities','OpporthunityController');
+//    Route::get('/tender/create', 'TenderController@create')->name('make_tender');
+//    Route::get('/tender/{{tender}}/show', 'TenderController@show')->name('show_tender');
+//    Route::get('/tender/{{tender}}/edit', 'TenderController@edit')->name('edit_tender');
+//    Route::post('/tender_update', 'TenderController@update')->name('update_tender');
+//    Route::post('/tender/save', 'TenderController@save')->name('save_tender');
+//    Route::get('/tender/all', 'TenderController@viewTenders')->name('view_tenders');
+//    Route::delete('/tender/{{tender}}/delete', 'TenderController@destroy')->name('delete_tender');
 
 });
