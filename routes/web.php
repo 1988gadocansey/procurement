@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/register/buyer', 'BuyerController@create')->name('buyer')->middleware('guest');
+Route::get('/register/buyer', 'BuyerController@create')->name('buyer');
+Route::post('fetch_district', 'HelpController@fetchDistricts')->name('ajax_district');
+Route::post('register_save', 'BuyerController@save')->name('save_buyer');
+
 Route::get('/', function () {
     return view('landing-page');
 })->middleware('guest');
@@ -23,7 +26,8 @@ Route::group(['middleware' => ['web']], function () {
         return view('welcome');
     });
 
-});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+});

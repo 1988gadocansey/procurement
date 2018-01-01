@@ -6,7 +6,7 @@
     <div class="md-card">
         <div class="md-card-content large-padding">
 
-            <form  novalidate id="wizard_advanced_form" class="uk-form-stacked"   action="" method="post" accept-charset="utf-8"  name="updateForm"  v-form>
+            <form  novalidate id="wizard_advanced_form" class="uk-form-stacked"   action="{{route("save_buyer")}}" method="post" accept-charset="utf-8"  name="updateForm"  v-form>
 
                 {!!  csrf_field() !!}
                 <div data-uk-observe="" id="wizard_advanced" role="application" class="wizard clearfix">
@@ -36,8 +36,8 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Business Name :</label><input type="text" id="fname" name="bname" class="md-input"   required="required"     v-model="bname"  v-form-ctrl><span class="md-input-bar"></span></div>
-                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.fname.$error.required">Business name is required</p>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Business Name :</label><input type="text" id="name" name="name" class="md-input"   required="required"     v-model="name"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.name.$error.required">Business name is required</p>
                                     </div>
                                 </div>
 
@@ -52,7 +52,8 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Year of Registration :</label><input type="text" id="oname" name="othernames" v-form-ctrl  class="md-input"    v-model="othernames"      /><span class="md-input-bar"></span></div>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Year of Registration :</label><input type="text" id="year" name="year" v-form-ctrl  class="md-input"    v-model="year"   required    /><span class="md-input-bar"></span></div>
+                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.year.$error.required">Year of registration is required</p>
 
                                     </div>
                                 </div>
@@ -60,7 +61,7 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Physical location N<u>o</u> :</label><input type="text" id="location" name="location" class="md-input"   required="required"       v-model="location"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Physical location:</label><input type="text" id="location" name="location" class="md-input"   required="required"       v-model="location"  v-form-ctrl><span class="md-input-bar"></span></div>
                                         <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.registration.$error.required">location is required</p>
                                     </div>
                                 </div>
@@ -73,23 +74,51 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <label for="">Gender :</label>
+                                        <label for="">Region :</label>
                                         <div class="md-input-wrapper md-input-filled">
-                                            {!!   Form::select('gender',array("Male"=>"Male",'Female'=>"Female"),old('gender',''),array('placeholder'=>'Select gender',"required"=>"required","class"=>"md-input","v-model"=>"gender","v-form-ctrl"=>"","v-select"=>"gender"))  !!}
+                                            {!!   Form::select('region',$regions ,old('region'),array('placeholder'=>'select region',"required"=>"required","class"=>"md-input","id"=>"region","v-model"=>"region","v-form-ctrl"=>"","v-select"=>"region")   )  !!}
+
                                             <span class="md-input-bar"></span>
                                         </div>
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.gender.$error.required">Gender is required</p>
+                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.region.$error.required">Region is required</p>
+                                    </div>
+                                </div>
+                                <div class="parsley-row" style="visibility: hidden">
+                                    <div class="uk-input-group">
+
+                                        <label for="">District :</label>
+                                        <div class="md-input-wrapper md-input-filled">
+                                            {!! Form::select('district',[''=>'--- Select District ---'],null,['id'=>'district',"v-model"=>"district","v-form-ctrl"=>"","style"=>"","v-select"=>"district"]) !!}
+
+
+
+                                            <span class="md-input-bar"></span>
+                                        </div>
+                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.district.$error.required">District is required</p>
                                     </div>
                                 </div>
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <label for="">Marital Status :</label>
-                                        <div class="md-input-wrapper md-input-filled">
-                                            {!!   Form::select('marital_status',array("Married"=>"Married",'Single'=>"Single"),old('marital_status',''),array('placeholder'=>'Select marital status',"required"=>"required","class"=>"md-input","v-model"=>"marital_status","v-form-ctrl"=>"","v-select"=>"marital_status"))  !!}
-                                            <span class="md-input-bar"></span>
-                                        </div>
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.marital_status.$error.required">Marital Status is required</p>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Tin N<u>o</u> :</label><input type="text" id="tin" name="tin" class="md-input" data-parsley-type="digits"    required="required"       v-model="tin"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.tin.$invalid">Please enter a valid tin number</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="parsley-row">
+                                    <div class="uk-input-group">
+
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Ghana Post GPS :</label><input type="text" id="gps" name="gps" class="md-input"     v-model="gps"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                       </div>
+                                </div>
+                                <div class="parsley-row">
+                                    <div class="uk-input-group">
+
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_email">Email :</label><input type="email" id="email" name="email" class="md-input"  required=""  v-model="email"v-form-ctrl  ><span class="md-input-bar"></span></div>
+                                        <p class="uk-text-danger uk-text-small "  v-if="updateForm.email.$invalid"  >Please enter a valid email address</p>
+
                                     </div>
                                 </div>
                                 <div class="parsley-row">
@@ -100,160 +129,18 @@
                                     </div>
                                 </div>
 
-
-
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_twitter">Date of Birth :</label><input type="text" name="dob" class="md-input" data-uk-datepicker="{format:'DD/MM/YYYY'}" required="required"  v-model="dob"  v-form-ctrl   ><span class="md-input-bar"></span></div>
-                                        <p class="uk-text-danger uk-text-small " v-if="updateForm.dob.$error.required" >Date of birth is required</p>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div data-uk-grid-margin="" class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-large-1-4">
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_twitter">INDEX N<u>0</u> :</label><input type="text" name="indexno" class="md-input"    v-model="indexno"  v-form-ctrl   ><span class="md-input-bar"></span></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="parsley-row"  >
-                                    <div class="uk-input-group">
-
-                                        <label for="">Religious Denomination :</label>
-
-
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.religion.$error.required">Religion is required</p>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Home Address :</label><input type="text" id="address" name="address"  required=""v-form-ctrl  class="md-input"    v-model="address"      /><span class="md-input-bar"></span></div>
-                                        <p class="uk-text-danger uk-text-small " v-if="updateForm.address.$error.required" >Home Address is required</p>
-
-                                    </div>
-                                </div>
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Contact Address
-                                                :</label><input type="text" id="contact" name="contact" class="md-input"   required="required"    v-model="contact"  v-form-ctrl><span class="md-input-bar"></span></div>
-                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.contact.$error.required">Contact Address is required</p>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                            <div data-uk-grid-margin="" class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-large-1-4">
-
-
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Hometown :</label><input type="text" id="hometown" name="hometown" class="md-input"   required="required"      v-model="hometown"  v-form-ctrl><span class="md-input-bar"></span></div>
-                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.hometown.$error.required">Hometown is required</p>
-                                    </div>
-                                </div>
-
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <label for="">Hometown Region:</label>
-
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.region.$error.required">Region is required</p>
-                                    </div>
-                                </div>
-
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <label for="">Nationality:</label>
-
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.nationality.$error.required">Nationality is required</p>
-                                    </div>
-                                </div>
-
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <label for="">Student Category :</label>
-                                        <div class="md-input-wrapper md-input-filled">
-                                            {!!   Form::select('category',array("Regular"=>"Regular","Evening"=>"Evening","Weekend"=>"Weekend",'Exchange programme'=>'Exchange programme'),old('category',''),array('placeholder'=>'Select category',"required"=>"required","class"=>"md-input","v-model"=>"category","v-form-ctrl"=>"","v-select"=>"category"))  !!}
-                                            <span class="md-input-bar"></span>
-                                        </div>
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.category.$error.required">Type is required</p>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Contact Person:</label><input type="text" id="contact" name="contact" class="md-input"   required="required"       v-model="contact"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.contact.$error.required">Contact person name is required</p>
                                     </div>
                                 </div>
 
 
                             </div>
-                            <div data-uk-grid-margin="" class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-large-1-4">
 
 
-                                <div class="parsley-row">
-                                    <div class="uk-input-group">
-
-                                        <label for="">Level/Year :</label>
-
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.year.$error.required">year is required</p>
-                                    </div>
-                                </div>
-
-                                <div class="parsley-row" style="margin-left:10px">
-                                    <div class="uk-input-group">
-
-                                        <label for="">Programme:</label>
-                                        <div class="md-input-wrapper md-input-filled">
-                                                <span class="md-input-bar"></span>
-                                        </div>
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.programme.$error.required">programme is required</p>
-                                    </div>
-                                </div>
-
-                                <div class="parsley-row" style="margin-left:80px">
-                                    <div class="uk-input-group">
-
-                                        <label for="">Residential Status :</label>
-                                        <div class="md-input-wrapper md-input-filled">
-                                            {!!   Form::select('type',array("Resident"=>"Resident",'Non Resident'=>"Non Resident"),old('type',''),array('placeholder'=>'Select residential status', "style"=>"","class"=>"md-input","v-model"=>"type","v-form-ctrl"=>"","v-select"=>"type"))  !!}
-                                            <span class="md-input-bar"></span>
-                                        </div>
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.type.$error.required">Residential Status is required</p>
-
-                                    </div>
-                                </div>
-
-                                <div class="parsley-row" v-if ="type=='Non Resident'">
-                                    <div class="uk-input-group">
-
-
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Hostel :</label><input type="text" id="hostel" name="hostel" class="md-input"   required="required"    v-model="hostel"  v-form-ctrl><span class="md-input-bar"></span></div>
-                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.hostel.$error.required">Hostel Name is required</p>
-
-
-                                    </div>
-                                </div>
-                                <div class="parsley-row" v-if ="type=='Resident'">
-                                    <div class="uk-input-group">
-
-                                        <label for="">Hall :</label>
-
-
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.halls.$error.required">Hall is required</p>
-                                    </div>
-                                </div>
-                            </div>
 
 
 
@@ -263,94 +150,37 @@
                         <!-- second section -->
                         {{-- <h3 id="payment-heading-1" tabindex="-1" class="title">Payment</h3> --}}
                         <section id="payment_section" role="tabpanel" aria-labelledby="payment section" class="body step-1 "  v-bind:class="{'uk-hidden': !in_payment_section} "  data-step="1"  aria-hidden="true">
-                            <h2 class="heading_a">
+                            <h2 class="heading_a"></h2>
+
 
                                 <div data-uk-grid-margin="" class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-large-1-4">
+                                    <div class="parsley-row">
+                                        <div class="uk-input-group">
+
+                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_twitter">Contact Person Position :</label><input type="text" name="position" class="md-input"    v-model="position"  v-form-ctrl   ><span class="md-input-bar"></span></div>
+                                        </div>
+                                    </div>
+
+
 
 
                                     <div class="parsley-row">
                                         <div class="uk-input-group">
 
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_email">Email :</label><input type="email" id="email" name="email" class="md-input"   v-model="email"v-form-ctrl  ><span class="md-input-bar"></span></div>
-                                            <p class="uk-text-danger uk-text-small "  v-if="updateForm.email.$invalid"  >Please enter a valid email address</p>
-
+                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_twitter">Category :</label><input type="text" name="category" class="md-input"    v-model="category"  v-form-ctrl   ><span class="md-input-bar"></span></div>
                                         </div>
                                     </div>
 
 
-                                    <div class="parsley-row">
-                                        <div class="uk-input-group">
-
-                                            <label for="">Disability:</label>
-                                            <div class="md-input-wrapper md-input-filled">
-                                                {!!   Form::select('disable',array('Disabled'=>'Disabled','None' => 'None'),old('year',''),array('placeholder'=>'Select response',"class"=>"md-input","v-model"=>"disable","v-form-ctrl"=>"","v-select"=>"disable"))  !!}
-                                                <span class="md-input-bar"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="parsley-row" v-if ="disable=='Disabled'">
-                                        <div class="uk-input-group">
 
 
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Disabilty Name :</label><input type="text" id="disabilty" name="disabilty" class="md-input"   required="required"      v-model="disabilty"  v-form-ctrl><span class="md-input-bar"></span></div>
 
-
-                                        </div>
-                                    </div>
-                                    <div class="parsley-row">
-                                        <div class="uk-input-group">
-
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_email">NHIS N<u>O</u> :</label><input type="text" id="" name="nhis" class="md-input"   v-model="nhis"v-form-ctrl  ><span class="md-input-bar"></span></div>
-
-                                        </div>
-                                    </div>
-                                    <div class="parsley-row">
-                                        <div class="uk-input-group">
-
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_email">BILLS:</label><input type="text" id="" name="bill" class="md-input"   disabled=""v-model="bill"v-form-ctrl  ><span class="md-input-bar"></span></div>
-
-                                        </div>
-                                    </div>
 
                                 </div>
 
-                                <div data-uk-grid-margin="" class="uk-grid uk-grid-width-medium-1-4 uk-grid-width-large-1-4">
 
 
-                                    <div class="parsley-row">
-                                        <div class="uk-input-group">
 
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Guardian Name :</label><input type="text" id="gname" name="gname" class="md-input"      v-model="gname"  v-form-ctrl><span class="md-input-bar"></span></div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="parsley-row">
-                                        <div class="uk-input-group">
-
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Guardian Phone N<u>o</u> :</label><input type="text" id="gphone" name="gphone" class="md-input" data-parsley-type="digits" minlength="10"     maxlength="10" v  pattern='^[0-9]{10}$'  v-model="gphone"  v-form-ctrl><span class="md-input-bar"></span></div>
-                                            <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.gphone.$invalid">Please enter a valid phone number of 10 digits</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="parsley-row">
-                                        <div class="uk-input-group">
-
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Guardian Address :</label><input type="text" id="onamesk" name="gaddress" v-form-ctrl  class="md-input"    v-model="gaddress"      /><span class="md-input-bar"></span></div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="parsley-row">
-                                        <div class="uk-input-group">
-
-                                            <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Guardian Occupation :</label><input type="text" id="onames" name="goccupation" v-form-ctrl  class="md-input"    v-model="goccupation"      /><span class="md-input-bar"></span></div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
                         </section>
 
 
@@ -462,6 +292,38 @@
                 }
             }
         })
+
+    </script>
+    <script type="text/javascript">
+
+            $("select[name='region']").change(function(){
+
+
+                var region= $(this).val();
+
+                var token = $("input[name='_token']").val();
+
+                $.ajax({
+
+                    url: "<?php echo route('ajax_district') ?>",
+
+                    method: 'POST',
+
+                    data: {region:region, _token:token},
+
+
+                    success: function(data) {
+
+                        $("select[name='district']").html('');
+
+                        $("select[name='district']").html(data.options);
+
+                    }
+
+                });
+
+            });
+
 
     </script>
     @endsection
