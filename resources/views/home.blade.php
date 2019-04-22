@@ -1,7 +1,12 @@
-@extends('layouts.homeLayout')
+@extends('layouts.app')
 
 @section('content')
-<div class="container">
+    <h3 class="heading_b uk-margin-bottom">Form Validation</h3>
+
+    <div class="md-card">
+        <div class="md-card-content large-padding">
+
+        <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -21,4 +26,7 @@
         </div>
     </div>
 </div>
+        </div>
+    </div>
+
 @endsection

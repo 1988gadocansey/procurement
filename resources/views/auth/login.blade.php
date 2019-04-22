@@ -1,74 +1,159 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<!doctype html>
+<!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <meta name="msapplication-tap-highlight" content="no"/>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    <link rel="icon" type="image/png" href="{!! url('public/assets/img/favicon-16x16.png')!!}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{!! url('public/assets/img/favicon-32x32.png')!!}" sizes="32x32">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    <title>Procurement- Login Page v2</title>
 
-                            <div class="col-md-6">
-                                <h1 >Osikani</h1>
-                                <input  id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+    <!-- uikit -->
+    <link rel="stylesheet" href="{!! url('public/bower_components/uikit/css/uikit.almost-flat.min.css')!!}"/>
+
+    <!-- altair admin login page -->
+    <link rel="stylesheet" href="{!! url('public/assets/css/login_page.min.css')!!}" />
+
+</head>
+<body class="login_page login_page_v2">
+
+<div class="uk-container uk-container-center">
+    <div class="md-card">
+        <div class="md-card-content padding-reset">
+            <div class="uk-grid uk-grid-collapse">
+                <div class="uk-width-large-2-3 uk-hidden-medium uk-hidden-small">
+                    <div class="login_page_info uk-height-1-1" style="background-image: url('{!! url('public/assets/img/others/sabri-tuzcu-331970.jpg')!!}')">
+                        <div class="info_content">
+                            <h1 class="heading_b">Login Page Header</h1>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut culpa cumque eaque earum error esse exercitationem fuga, fugiat harum perferendis praesentium quasi qui, repellendus sapiente, suscipit totam! Eaque, excepturi!
+                            <p>
+                                <a class="md-btn md-btn-success md-btn-small md-btn-wave" href="javascript:void(0)">More info</a>
+                            </p>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                    </div>
+                </div>
+                <div class="uk-width-large-1-3 uk-width-medium-2-3 uk-container-center">
+                    <div class="login_page_forms">
+                        <div id="login_card">
+                            <div id="login_form">
+                                <div class="login_heading">
+                                    <div class="user_avatar"></div>
                                 </div>
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    <div class="uk-form-row">
+                                        <label for="login_username">Email</label>
+                                        <input class="md-input" type="text" id="login_username" name="email" required />
+                                    </div>
+                                    <div class="uk-form-row">
+                                        <label for="login_password">Password</label>
+                                        <input class="md-input" type="password" id="login_password" name="password" required />
+                                    </div>
+                                    <div class="uk-margin-medium-top">
+                                        <button type="submit" class="md-btn md-btn-primary md-btn-block md-btn-large">Sign In</button>
+                                    </div>
+                                    <div class="uk-grid uk-grid-width-1-3 uk-grid-small uk-margin-top" data-uk-grid-margin>
+                                        <div><a href="login_v2.html#" class="md-btn md-btn-block md-btn-facebook" data-uk-tooltip="{pos:'bottom'}" title="Sign in with Facebook"><i class="uk-icon-facebook uk-margin-remove"></i></a></div>
+                                        <div><a href="login_v2.html#" class="md-btn md-btn-block md-btn-twitter" data-uk-tooltip="{pos:'bottom'}" title="Sign in with Twitter"><i class="uk-icon-twitter uk-margin-remove"></i></a></div>
+                                        <div><a href="login_v2.html#" class="md-btn md-btn-block md-btn-gplus" data-uk-tooltip="{pos:'bottom'}" title="Sign in with Google+"><i class="uk-icon-google-plus uk-margin-remove"></i></a></div>
+                                    </div>
+                                    <div class="uk-margin-top">
+                                        <a href="login_v2.html#" id="login_help_show" class="uk-float-right">Need help?</a>
+                                        <span class="icheck-inline">
+                                                <input type="checkbox"   name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} data-md-icheck />
+                                                <label for="login_page_stay_signed" class="inline-label">Stay signed in</label>
+                                            </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="uk-position-relative" id="login_help" style="display: none">
+                                <button type="button" class="uk-position-top-right uk-close uk-margin-right back_to_login"></button>
+                                <h2 class="heading_b uk-text-success">Can't log in?</h2>
+                                <p>Here’s the info to get you back in to your account as quickly as possible.</p>
+                                <p>First, try the easiest thing: if you remember your password but it isn’t working, make sure that Caps Lock is turned off, and that your username is spelled correctly, and then try again.</p>
+                                <p>If your password still isn’t working, it’s time to <a href="login_v2.html#" id="password_reset_show">reset your password</a>.</p>
+                            </div>
+                            <div id="login_password_reset" style="display: none">
+                                <button type="button" class="uk-position-top-right uk-close uk-margin-right back_to_login"></button>
+                                <h2 class="heading_a uk-margin-large-bottom">Reset password</h2>
+                                <form>
+                                    <div class="uk-form-row">
+                                        <label for="login_email_reset">Your email address</label>
+                                        <input class="md-input" type="text" id="login_email_reset" name="login_email_reset" />
+                                    </div>
+                                    <div class="uk-margin-medium-top">
+                                        <a href="index.html" class="md-btn md-btn-primary md-btn-block">Reset password</a>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="register_form" style="display: none">
+                                <button type="button" class="uk-position-top-right uk-close uk-margin-right back_to_login"></button>
+                                <h2 class="heading_a uk-margin-medium-bottom">Create an account</h2>
+                                <form  method="POST" action="{{ route('login') }}">
+                                    @csrf
+
+                                    <div class="uk-form-row">
+                                        <label for="register_username">Username</label>
+                                        <input class="md-input" type="text" id="register_username" name="register_username" />
+                                    </div>
+                                    <div class="uk-form-row">
+                                        <label for="register_password">Password</label>
+                                        <input class="md-input" type="password" id="register_password" name="register_password" />
+                                    </div>
+                                    <div class="uk-form-row">
+                                        <label for="register_password_repeat">Repeat Password</label>
+                                        <input class="md-input" type="password" id="register_password_repeat" name="register_password_repeat" />
+                                    </div>
+                                    <div class="uk-form-row">
+                                        <label for="register_email">E-mail</label>
+                                        <input class="md-input" type="text" id="register_email" name="register_email" />
+                                    </div>
+                                    <div class="uk-margin-medium-top">
+                                        <a href="index.html" class="md-btn md-btn-primary md-btn-block md-btn-large">Sign Up</a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
+                        <div class="uk-margin-top uk-text-center">
+                            <a href="login_v2.html#" id="signup_form_show">Create an account</a>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
-@endsection
+
+<!-- common functions -->
+<script src="{!! url('public/assets/js/common.min.js')!!}"></script>
+<!-- uikit functions -->
+<script src="{!! url('public/assets/js/uikit_custom.min.js')!!}"></script>
+<!-- altair core functions -->
+<script src="{!! url('assets/js/altair_admin_common.min.js')!!}"></script>
+
+<!-- altair login page functions -->
+<script src="{!! url('assets/js/pages/login.min.js')!!}"></script>
+
+<script>
+    // check for theme
+    if (typeof(Storage) !== "undefined") {
+        var root = document.getElementsByTagName( 'html' )[0],
+            theme = localStorage.getItem("altair_theme");
+        if(theme == 'app_theme_dark' || root.classList.contains('app_theme_dark')) {
+            root.className += ' app_theme_dark';
+        }
+    }
+</script>
+
+
+</body>
+</html>
