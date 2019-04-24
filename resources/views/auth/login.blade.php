@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="{!! url('public/assets/img/favicon-16x16.png')!!}" sizes="16x16">
     <link rel="icon" type="image/png" href="{!! url('public/assets/img/favicon-32x32.png')!!}" sizes="32x32">
 
-    <title>Procurement- Login Page v2</title>
+    <title>Procurement- Login</title>
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
 
@@ -26,6 +26,22 @@
 <body class="login_page login_page_v2">
 
 <div class="uk-container uk-container-center">
+    <div>
+        <!-- if there are login errors, show them here -->
+        @if (count($errors) > 0)
+
+            <div class="uk-form-row">
+                <div class="alert alert-danger" style="background-color: red;color: white">
+
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li> {!!  $error  !!} </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+    </div>
     <div class="md-card">
         <div class="md-card-content padding-reset">
             <div class="uk-grid uk-grid-collapse">
@@ -41,6 +57,7 @@
                     </div>
                 </div>
                 <div class="uk-width-large-1-3 uk-width-medium-2-3 uk-container-center">
+
                     <div class="login_page_forms">
                         <div id="login_card">
                             <div id="login_form">
