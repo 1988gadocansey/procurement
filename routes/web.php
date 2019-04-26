@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/register/buyer', 'BuyerController@create')->name('buyer')->middleware('guest');
 Route::get('/', function () {
     return view('landing-page');
 })->middleware('guest');

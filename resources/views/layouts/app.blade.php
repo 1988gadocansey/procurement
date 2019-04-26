@@ -30,7 +30,10 @@
 
     <!-- themes -->
     <link rel="stylesheet" href="{!! url('public/assets/css/themes/themes_combined.min.css')!!}" media="all">
-
+    <link rel="stylesheet" href="{!! url('public/assets/css/select2.min.css') !!}" media="all">
+    <link rel="stylesheet" href="{!! url('public/assets/css/dropify.css') !!}" media="all">
+    <link rel="stylesheet" href="{!! url( 'datatables/css/jquery.dataTables.min.css')  !!}" >
+    <link rel="stylesheet" href="{!! url( 'datatables/css/dataTables.uikit.min.css')  !!}" >
 
     <link rel="stylesheet" href="{!! url('public/assets/css/ie.css')!!}"media="all">
 
@@ -268,6 +271,7 @@
 
     <div class="menu_section">
         <ul>
+            @if(Auth::check())
             <li class="current_section" title="Dashboard">
                 <a href="index.html">
                     <span class="menu_icon"><i class="material-icons">&#xE871;</i></span>
@@ -283,6 +287,9 @@
                 </a>
 
             </li>
+
+
+
             <li title="Chats">
                 <a href="index.html#">
                     <span class="menu_icon"><i class="material-icons">&#xE0B9;</i></span>
@@ -294,6 +301,7 @@
                 </ul>
 
             </li>
+
             <li title="Chats">
                 <a href="index.html#">
                     <span class="menu_icon"><i class="material-icons">&#xE0B9;</i></span>
@@ -314,6 +322,7 @@
                 </a>
 
             </li>
+                @endif
 
 
         </ul>
@@ -619,19 +628,17 @@
 <!-- altair common functions/helpers -->
 <script src="{!! url('public/assets/js/altair_admin_common.min.js')!!}"></script>
 
-<!-- page specific plugins -->
-<!-- d3 -->
-<script src="{!! url('public/bower_components/d3/d3.min.js')!!}"></script>
-<!-- metrics graphics (charts) -->
-<script src="{!! url('public/bower_components/metrics-graphics/dist/metricsgraphics.min.js')!!}"></script>
-<!-- chartist (charts) -->
-<script src="{!! url('public/bower_components/chartist/dist/chartist.min.js')!!}"></script>
+<!-- altair common functions/helpers -->
+<script src="{!! url('public/assets/js/altair_admin_common.min.js') !!}"></script>
 
-<!-- countUp -->
-<script src="{!! url('public/bower_components/countUp.js/dist/countUp.min.js')!!}"></script>
+<script src="{!! url('public/assets/js/vue.min.js') !!}"></script>
+<script src="{!! url('public/assets/js/vue-form.min.js') !!}"></script>
+<script src="{!! url('public/assets/js/jquery-ui.min.js') !!}"></script>
+<script src="{!! url('public/datatables/js/dataTables.uikit.min.js') !!}"></script>
+<script src="{!! url('public/datatables/js/plugins_datatables.min.js') !!}"></script>
+<script src="{!! url('public/datatables/js/datatables_uikit.min.js') !!}"></script>
 
-<!--  dashbord functions -->
-<script src="{!! url('public/assets/js/pages/dashboard.min.js')!!}"></script>
+
 @yield('js')
 <script>
     $(function() {

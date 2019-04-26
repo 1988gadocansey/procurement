@@ -68,11 +68,18 @@
                             Resources
                         </a>
                     </li>
-                    <li>
-                        <a href="#sect-team">
-                            DASHBOARD
-                        </a>
+                    <li data-uk-dropdown class="uk-hidden-small">
+                        <a href="layout_top_menu.html#"><i class="material-icons">&#xE8D2;</i><span>REGISTER</span></a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+
+                                <li><a href="forms_advanced.html">Register as Vendor</a></li>
+                                <li><a href="{!! url('/register/buyer') !!}">Register as Buyer</a></li>
+                                 
+                            </ul>
+                        </div>
                     </li>
+
 
                     <li>
                         <a href="{{url("/login")}}">
