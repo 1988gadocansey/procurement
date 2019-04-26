@@ -14,12 +14,12 @@
                         <ul role="tablist">
                             <li role="tab" class="fill_form_header first current" aria-disabled="false" aria-selected="true" v-bind:class="{ 'error' : !in_payment_section}">
                                 <a aria-controls="wizard_advanced-p-0" href="#wizard_advanced-h-0" id="wizard_advanced-t-0">
-                                    <span class="current-info audible">current step: </span><span class="number">1</span> <span class="title">Biodata and Academics</span>
+                                    <span class="current-info audible">current step: </span><span class="number">1</span> <span class="title">Stage One</span>
                                 </a>
                             </li>
                             <li role="tab" class="payment_header disabled" aria-disabled="true"   v-bind:class="{ 'error' : in_payment_section}" >
                                 <a aria-controls="wizard_advanced-p-1" href="#wizard_advanced-h-1" id="wizard_advanced-t-1">
-                                    <span class="number">2</span> <span class="title">Guardian Info and Others</span>
+                                    <span class="number">2</span> <span class="title">Stage Two</span>
                                 </a>
                             </li>
                         </ul>
@@ -36,23 +36,23 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">First Name :</label><input type="text" id="fname" name="fname" class="md-input"   required="required"     v-model="fname"  v-form-ctrl><span class="md-input-bar"></span></div>
-                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.fname.$error.required">Please enter your first name</p>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Business Name :</label><input type="text" id="fname" name="bname" class="md-input"   required="required"     v-model="bname"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.fname.$error.required">Business name is required</p>
                                     </div>
                                 </div>
 
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Last Name :</label><input type="text" id="surname" name="surname" class="md-input"   required="required"       v-model="surname"  v-form-ctrl><span class="md-input-bar"></span></div>
-                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.surname.$error.required">Please enter your surname</p>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Company Registration N<u>o</u> :</label><input type="text" id="registration" name="registration" class="md-input"   required="required"       v-model="registration"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.registration.$error.required">registration number is required</p>
                                     </div>
                                 </div>
 
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Other Names :</label><input type="text" id="oname" name="othernames" v-form-ctrl  class="md-input"    v-model="othernames"      /><span class="md-input-bar"></span></div>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Year of Registration :</label><input type="text" id="oname" name="othernames" v-form-ctrl  class="md-input"    v-model="othernames"      /><span class="md-input-bar"></span></div>
 
                                     </div>
                                 </div>
@@ -60,12 +60,8 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <label for="">Title :</label>
-                                        <div class="md-input-wrapper md-input-filled">
-                                            {!!   Form::select('title',array("Mr"=>"Mr","Mrs"=>"Mrs","Miss"=>"Miss"),old('title',''),array('placeholder'=>'Select title',"required"=>"required","class"=>"md-input","v-model"=>"title","v-form-ctrl"=>"","v-select"=>"title"))  !!}
-                                            <span class="md-input-bar"></span>
-                                        </div>
-                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.title.$error.required">Title is required</p>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Physical location N<u>o</u> :</label><input type="text" id="location" name="location" class="md-input"   required="required"       v-model="location"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.registration.$error.required">location is required</p>
                                     </div>
                                 </div>
 

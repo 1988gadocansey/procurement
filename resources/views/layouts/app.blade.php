@@ -633,7 +633,7 @@
 
 <script src="{!! url('public/assets/js/vue.min.js') !!}"></script>
 <script src="{!! url('public/assets/js/vue-form.min.js') !!}"></script>
-<script src="{!! url('public/assets/js/jquery-ui.min.js') !!}"></script>
+
 <script src="{!! url('public/datatables/js/dataTables.uikit.min.js') !!}"></script>
 <script src="{!! url('public/datatables/js/plugins_datatables.min.js') !!}"></script>
 <script src="{!! url('public/datatables/js/datatables_uikit.min.js') !!}"></script>
