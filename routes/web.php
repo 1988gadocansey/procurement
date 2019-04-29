@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/register/buyer', 'BuyerController@create')->name('buyer');
+Route::get('/register/buyer', 'PersonController@create')->name('buyer');
 Route::post('fetch_district', 'HelpController@fetchDistricts')->name('ajax_district');
-Route::post('register_save', 'BuyerController@save')->name('save_buyer');
+Route::post('register_save', 'PersonController@save')->name('save_person');
 
 Route::get('/', function () {
     return view('landing-page');
@@ -27,7 +27,11 @@ Route::group(['middleware' => ['web']], function () {
     });
 
 
-Auth::routes();
+    Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('profile', function () {
+        // Only verified users may enter...
+    })->middleware('verified');
 });

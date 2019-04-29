@@ -1,12 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="md-card-content">
+        @if(Session::has('success'))
+            <div style="text-align: center" class="uk-alert uk-alert-success" data-uk-alert="">
+                {!! Session::get('success') !!}
+            </div>
+        @endif
+
+        @if(Session::has('error'))
+            <div style="text-align: center" class="uk-alert uk-alert-danger" data-uk-alert="">
+                {!! Session::get('error') !!}
+            </div>
+        @endif
+
+
+    </div>
     <h3 class="heading_b uk-margin-bottom">Register as buyer</h3>
 
     <div class="md-card">
         <div class="md-card-content large-padding">
 
-            <form  novalidate id="wizard_advanced_form" class="uk-form-stacked"   action="{{route("save_buyer")}}" method="post" accept-charset="utf-8"  name="updateForm"  v-form>
+            <form  novalidate id="wizard_advanced_form" class="uk-form-stacked"   action="{{route("save_person")}}" method="post" accept-charset="utf-8"  name="updateForm"  v-form>
 
                 {!!  csrf_field() !!}
                 <div data-uk-observe="" id="wizard_advanced" role="application" class="wizard clearfix">
@@ -83,12 +98,12 @@
                                         <p class="uk-text-danger uk-text-small"  v-if="updateForm.region.$error.required">Region is required</p>
                                     </div>
                                 </div>
-                                <div class="parsley-row" style="visibility: hidden">
+                                <div class="parsley-row metro">
                                     <div class="uk-input-group">
 
                                         <label for="">District :</label>
                                         <div class="md-input-wrapper md-input-filled">
-                                            {!! Form::select('district',[''=>'--- Select District ---'],null,['id'=>'district',"v-model"=>"district","v-form-ctrl"=>"","style"=>"","v-select"=>"district"]) !!}
+                                            {!! Form::select('district',[''=>'--- Select District ---'],null,['id'=>'district',"v-model"=>"district","v-form-ctrl"=>"","style"=>"","v-select"=>"district","required"=>""]) !!}
 
 
 
@@ -134,6 +149,17 @@
 
                                         <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Contact Person:</label><input type="text" id="contact" name="contact" class="md-input"   required="required"       v-model="contact"  v-form-ctrl><span class="md-input-bar"></span></div>
                                         <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.contact.$error.required">Contact person name is required</p>
+                                    </div>
+                                </div>
+                                <div class="parsley-row">
+                                    <div class="uk-input-group">
+
+                                        <label for="">Register as :</label>
+                                        <div class="md-input-wrapper md-input-filled">
+                                            {!!   Form::select('entity_type',array("Buyer"=>"Buyer",'Vendor'=>"Vendor"),old('entity_type',''),array('placeholder'=>'Select registration type',"required"=>"required","class"=>"md-input","v-model"=>"entity_type","v-form-ctrl"=>"","v-select"=>"entity_type"))  !!}
+                                            <span class="md-input-bar"></span>
+                                        </div>
+                                        <p class="uk-text-danger uk-text-small"  v-if="updateForm.entity_type.$error.required">Registration type is required</p>
                                     </div>
                                 </div>
 
@@ -295,6 +321,7 @@
 
     </script>
     <script type="text/javascript">
+        $('.metro').hide();
 
             $("select[name='region']").change(function(){
 
@@ -314,6 +341,9 @@
 
                     success: function(data) {
 
+
+
+                        $('.metro').show();
                         $("select[name='district']").html('');
 
                         $("select[name='district']").html(data.options);

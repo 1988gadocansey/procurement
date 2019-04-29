@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Entity;
 
-class BuyerController extends Controller
+class PersonController extends Controller
 {
 
 
@@ -13,16 +13,27 @@ class BuyerController extends Controller
     public function create(HelpController $help)
     {
         $regions = $help->getRegions();
-        return view('buyers.create')->with("regions", $regions);
+        return view('people.create')->with("regions", $regions);
     }
 
     public function save(Request $request)
     {
+        $this->validate($request, [
+            'entity_type' => 'required',
+            'business_name' => 'required|unique:people',
+            'telephone' => 'required|unique:people',
+            'registration_number' => 'required',
+            'year_of_registration' => 'required',
+            'email' => 'required',
+            'physical_address' => 'required',
+            'district' => 'required',
 
+
+        ]);
 
 
             $user=\Auth::user()->id;
-            $entity = "Buyer";
+            $entity = $request->input('entity_type');
             $name = $request->input('name');
             $phone = $request->input('phone');
             $tin = $request->input('tin');

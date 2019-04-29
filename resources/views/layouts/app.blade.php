@@ -213,12 +213,14 @@
                         </div>
                     </li>
                     <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
-                        <a href="index.html#" class="user_action_image"><img class="md-user-image" src="assets/img/avatars/avatar_11_tn.png" alt=""/></a>
+                        @if(Auth::check())
+                        <a href="" style="color:white">Welcome {{@Auth::user()->name}}</a>
+                        @endif
                         <div class="uk-dropdown uk-dropdown-small">
                             <ul class="uk-nav js-uk-prevent">
 
-                                <li><a href='{!! url("/biodataUpdate") !!}'>My Profile</a></li>
-                                <li><a href='{!! url("change_password") !!}'>Reset password</a></li>
+                                <li><a href='{!! url("/biodataUpdate") !!}'>My Profile </a></li>
+                                <li><a href='{!! url("password/reset") !!}'>Reset password</a></li>
                                 <li>
 
                                     <a href="{{ url('/logout') }}"
@@ -274,16 +276,16 @@
             @if(Auth::check())
             <li class="current_section" title="Dashboard">
                 <a href="index.html">
-                    <span class="menu_icon"><i class="material-icons">&#xE871;</i></span>
-                    <span class="menu_title">Dashboard</span>
+                    <span class="menu_icon"><i class="material-icons md-24">home</i></span>
+                    <span class="menu_title">Home</span>
                 </a>
 
             </li>
 
             <li title="Invoices">
-                <a href="page_invoices.html">
-                    <span class="menu_icon"><i class="material-icons">&#xE53E;</i></span>
-                    <span class="menu_title">Invoices</span>
+                <a href="{!! url('/register/buyer') !!}">
+                    <span class="menu_icon"><i class="material-icons md-24">account_balance</i></span>
+                    <span class="menu_title">Register Company</span>
                 </a>
 
             </li>
@@ -292,7 +294,7 @@
 
             <li title="Chats">
                 <a href="index.html#">
-                    <span class="menu_icon"><i class="material-icons">&#xE0B9;</i></span>
+                    <span class="menu_icon"><i class="material-icons md-24">work</i></span>
                     <span class="menu_title">Tenders</span>
                 </a>
                 <ul>
@@ -304,7 +306,7 @@
 
             <li title="Chats">
                 <a href="index.html#">
-                    <span class="menu_icon"><i class="material-icons">&#xE0B9;</i></span>
+                    <span class="menu_icon"><i class="material-icons md-24">&#xE53E;</i></span>
                     <span class="menu_title">Opportunities</span>
                 </a>
                 <ul>
@@ -317,9 +319,24 @@
 
             <li title="User Profile">
                 <a href="page_user_profile.html">
-                    <span class="menu_icon"><i class="material-icons">&#xE87C;</i></span>
+                    <span class="menu_icon"><i class="material-icons md-24">verified_user</i></span>
                     <span class="menu_title">User Profile</span>
                 </a>
+
+            </li><li title="User Profile">
+                <li>
+
+                    <a href="{{ url('/logout') }}"
+                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                        <span class="menu_icon"><i class="material-icons md-24">lock</i></span>
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
 
             </li>
                 @endif
