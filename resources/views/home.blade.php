@@ -345,7 +345,19 @@
 
 <div id="page_content">
     <div id="page_content_inner">
+        <div class="md-card-content">
+            @if(Session::has('success'))
+                <div style="text-align: center" class="uk-alert uk-alert-success" data-uk-alert="">
+                    {!! Session::get('success') !!}
+                </div>
+            @endif
 
+            @if(Session::has('error'))
+                <div style="text-align: center" class="uk-alert uk-alert-danger" data-uk-alert="">
+                    {!! Session::get('error') !!}
+                </div>
+        @endif
+        </div>
         <!-- statistics (small charts) -->
         <div class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>
             <div>
@@ -370,7 +382,7 @@
                 <div class="md-card">
                     <div class="md-card-content">
                         <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>
-                        <span class="uk-text-muted uk-text-small">Orders Completed</span>
+                        <span class="uk-text-muted uk-text-small">Opportunities created</span>
                         <h2 class="uk-margin-remove"><span class="countUpMe">0<noscript>64</noscript></span>%</h2>
                     </div>
                 </div>
@@ -379,103 +391,15 @@
                 <div class="md-card">
                     <div class="md-card-content">
                         <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_live peity_data">5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2</span></div>
-                        <span class="uk-text-muted uk-text-small">Visitors (live)</span>
+                        <span class="uk-text-muted uk-text-small">Total Tender Viewed</span>
                         <h2 class="uk-margin-remove" id="peity_live_text">46</h2>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- large chart -->
-        <div class="uk-grid">
-            <div class="uk-width-1-1">
-                <div class="md-card">
-                    <div class="md-card-toolbar">
-                        <div class="md-card-toolbar-actions">
-                            <i class="md-icon material-icons md-card-fullscreen-activate">&#xE5D0;</i>
-                            <i class="md-icon material-icons">&#xE5D5;</i>
-                            <div class="md-card-dropdown" data-uk-dropdown="{pos:'bottom-right'}">
-                                <i class="md-icon material-icons">&#xE5D4;</i>
-                                <div class="uk-dropdown uk-dropdown-small">
-                                    <ul class="uk-nav">
-                                        <li><a href="index.html#">Action 1</a></li>
-                                        <li><a href="index.html#">Action 2</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="md-card-toolbar-heading-text">
-                            Chart
-                        </h3>
-                    </div>
-                    <div class="md-card-content">
-                        <div class="mGraph-wrapper">
-                            <div id="mGraph_sale" class="mGraph" data-uk-check-display></div>
-                        </div>
-                        <div class="md-card-fullscreen-content">
-                            <div class="uk-overflow-container">
-                                <table class="uk-table uk-table-no-border uk-text-nowrap">
-                                    <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Best Seller</th>
-                                        <th>Total Sale</th>
-                                        <th>Change</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>January 2014</td>
-                                        <td>Aliquid et quis.</td>
-                                        <td>$3 234 162</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>February 2014</td>
-                                        <td>Et corrupti itaque saepe.</td>
-                                        <td>$3 771 083</td>
-                                        <td class="uk-text-success">+2.5%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>March 2014</td>
-                                        <td>Neque soluta ipsam.</td>
-                                        <td>$2 429 352</td>
-                                        <td class="uk-text-danger">-4.6%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>April 2014</td>
-                                        <td>Sit qui officia.</td>
-                                        <td>$4 844 169</td>
-                                        <td class="uk-text-success">+7%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>May 2014</td>
-                                        <td>Cum in quod.</td>
-                                        <td>$5 284 318</td>
-                                        <td class="uk-text-success">+3.2%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>June 2014</td>
-                                        <td>Nemo laborum reprehenderit tempora.</td>
-                                        <td>$4 688 183</td>
-                                        <td class="uk-text-danger">-6%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>July 2014</td>
-                                        <td>Vel voluptas voluptate nisi.</td>
-                                        <td>$4 353 427</td>
-                                        <td class="uk-text-success">-5.3%</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <p class="uk-margin-large-top uk-margin-small-bottom heading_list uk-text-success">Some Info:</p>
-                            <p class="uk-margin-top-remove">Voluptatem modi hic illum sint recusandae voluptas incidunt aliquam laudantium eos quas beatae vel pariatur qui nihil vel nulla optio rerum quis veniam occaecati sequi non laudantium incidunt beatae autem nulla repellat dolorum porro alias nihil quo sed consequatur maxime itaque quo commodi voluptas libero accusantium molestiae voluptas tenetur occaecati similique tenetur eius facilis cumque voluptatum voluptatem sapiente rem voluptas aut necessitatibus libero inventore esse labore et eos voluptatem harum vel nihil nesciunt enim et rerum mollitia numquam molestiae et nobis nesciunt incidunt ut animi sunt aut quasi eos omnis architecto illo totam quidem ipsam dolorem dolorem distinctio inventore.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
 
         <!-- circular charts -->
         <div class="uk-grid uk-grid-width-small-1-2 uk-grid-width-large-1-3 uk-grid-width-xlarge-1-5 uk-text-center uk-sortable sortable-handler" id="dashboard_sortable_cards" data-uk-sortable data-uk-grid-margin>
@@ -499,17 +423,19 @@
             </div>
             <div>
                 <div class="md-card md-card-hover md-card-overlay">
-                    <div class="md-card-content uk-flex uk-flex-center uk-flex-middle">
-                        <span class="peity_conversions_large peity_data">5,3,9,6,5,9,7</span>
+                    <div class="md-card-content">
+                        <div class="epc_chart" data-percent="37" data-bar-color="#607d8b">
+                            <span class="epc_chart_icon"><i class="material-icons">&#xE7FE;</i></span>
+                        </div>
                     </div>
                     <div class="md-card-overlay-content">
                         <div class="uk-clearfix md-card-overlay-header">
                             <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
                             <h3>
-                                Conversions
+                                Company Info
                             </h3>
                         </div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Review information about your company
                     </div>
                 </div>
             </div>
@@ -524,7 +450,7 @@
                         <div class="uk-clearfix md-card-overlay-header">
                             <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
                             <h3>
-                                Tasks List
+                                Opportunities
                             </h3>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -543,7 +469,7 @@
                         <div class="uk-clearfix md-card-overlay-header">
                             <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
                             <h3>
-                                Orders
+                               Tenders
                             </h3>
                         </div>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -561,7 +487,7 @@
                         <div class="uk-clearfix md-card-overlay-header">
                             <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
                             <h3>
-                                User Registrations
+                                Add Company Info
                             </h3>
                         </div>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -663,319 +589,8 @@
         </div>
 
         <!-- info cards -->
-        <div class="uk-grid uk-grid-medium uk-grid-width-medium-1-2 uk-grid-width-large-1-3" data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">
-            <div>
-                <div class="md-card">
-                    <div class="md-card-head md-bg-light-blue-600">
-                        <div class="md-card-head-menu" data-uk-dropdown="{pos:'bottom-right'}">
-                            <i class="md-icon material-icons md-icon-light">&#xE5D4;</i>
-                            <div class="uk-dropdown uk-dropdown-small">
-                                <ul class="uk-nav">
-                                    <li><a href="index.html#">User profile</a></li>
-                                    <li><a href="index.html#">User permissions</a></li>
-                                    <li><a href="index.html#" class="uk-text-danger">Delete user</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="uk-text-center">
-                            <img class="md-card-head-avatar" src="assets/img/avatars/avatar_11.png" alt=""/>
-                        </div>
-                        <h3 class="md-card-head-text uk-text-center md-color-white">
-                            Arianna Herzog                                <span><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="83efecf7f7eae6b2b0c3e4e2faefecf1e7adeaede5ec">[email&#160;protected]</a></span>
-                        </h3>
-                    </div>
-                    <div class="md-card-content">
-                        <ul class="md-list md-list-addon">
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon material-icons">&#xE158;</i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading"><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="dbbfbab3b7b2baeeec9bbcb6bab2b7f5b8b4b6">[email&#160;protected]</a></span>
-                                    <span class="uk-text-small uk-text-muted">Email</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon material-icons">&#xE0CD;</i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">(192)770-9487</span>
-                                    <span class="uk-text-small uk-text-muted">Phone</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon uk-icon-facebook-official"></i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">facebook.com/envato</span>
-                                    <span class="uk-text-small uk-text-muted">Facebook</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon uk-icon-twitter"></i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">twitter.com/envato</span>
-                                    <span class="uk-text-small uk-text-muted">Twitter</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="md-card">
-                    <div class="md-card-head md-bg-grey-900">
-                        <div class="uk-cover uk-position-relative uk-height-1-1 transform-origin-50" id="video_player">
-                            <iframe width="300" height="150" src="about:blank" data-uk-cover frameborder="0" allowfullscreen style="max-height:100%"></iframe>
-                        </div>
-                    </div>
-                    <div class="md-card-content">
-                        <ul class="md-list md-list-addon md-list-interactive" id="video_player_playlist">
-                            <li data-video-src="-CYs99M7hzA">
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon material-icons">&#xE037;</i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Unboxing the HERO4</span>
-                                    <span class="uk-text-small uk-text-muted">Mashable</span>
-                                </div>
-                            </li>
-                            <li data-video-src="te689fEo2pY">
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon material-icons">&#xE037;</i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Apple Watch Unboxing & Setup</span>
-                                    <span class="uk-text-small uk-text-muted">Unbox Therapy</span>
-                                </div>
-                            </li>
-                            <li data-video-src="7AFJeaYojhU">
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon material-icons">&#xE037;</i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Energous WattUp Power Transmitter</span>
-                                    <span class="uk-text-small uk-text-muted">TechCrunch</span>
-                                </div>
-                            </li>
-                            <li data-video-src="hajnEpCq5SE">
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon material-icons">&#xE037;</i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">The new MacBook - Design</span>
-                                    <span class="uk-text-small uk-text-muted">Apple</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="md-card">
-                    <div class="md-card-head head_background" style="background-image: url('assets/img/gallery/Image17.jpg')">
-                        <div class="md-card-head-menu">
-                            <i class="md-icon material-icons md-icon-light">&#xE5D5;</i>
-                        </div>
-                        <h3 class="md-card-head-text">
-                            Some City
-                        </h3>
-                        <div class="md-card-head-subtext">
-                            <i class="md-card-head-icon wi wi-day-sunny-overcast uk-margin-right"></i>
-                            <span>14&deg;</span>
-                        </div>
-                    </div>
-                    <div class="md-card-content">
-                        <ul class="md-list md-list-addon">
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon wi wi-day-sunny-overcast"></i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">22&deg; Mostly Sunny</span>
-                                    <span class="uk-text-small uk-text-muted">9 Jul (Monday)</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon wi wi-cloudy"></i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">19&deg; Partly Cloudy</span>
-                                    <span class="uk-text-small uk-text-muted">10 Jul (Tuesday)</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon wi wi-day-rain"></i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">16&deg; Rainy</span>
-                                    <span class="uk-text-small uk-text-muted">11 Jul (Wednesday)</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="md-list-addon-element">
-                                    <i class="md-list-addon-icon wi wi-day-sunny uk-text-warning"></i>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">24&deg; Sunny</span>
-                                    <span class="uk-text-small uk-text-muted">11 Jul (Wednesday)</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
-            <div class="uk-width-large-1-2">
-                <div class="md-card">
-                    <div id="clndr_events" class="clndr-wrapper">
-                        <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-                            // calendar events
-                            clndrEvents = [
-                                { date: '2018-07-08', title: 'Doctor appointment', url: 'javascript:void(0)', timeStart: '10:00', timeEnd: '11:00' },
-                                { date: '2018-07-09', title: 'John\'s Birthday', url: 'javascript:void(0)' },
-                                { date: '2018-07-09', title: 'Party', url: 'javascript:void(0)', timeStart: '08:00', timeEnd: '08:30' },
-                                { date: '2018-07-13', title: 'Meeting', url: 'javascript:void(0)', timeStart: '18:00', timeEnd: '18:20' },
-                                { date: '2018-07-18', title: 'Work Out', url: 'javascript:void(0)', timeStart: '07:00', timeEnd: '08:00' },
-                                { date: '2018-07-18', title: 'Business Meeting', url: 'javascript:void(0)', timeStart: '11:10', timeEnd: '11:45' },
-                                { date: '2018-07-23', title: 'Meeting', url: 'javascript:void(0)', timeStart: '20:25', timeEnd: '20:50' },
-                                { date: '2018-07-26', title: 'Haircut', url: 'javascript:void(0)' },
-                                { date: '2018-07-26', title: 'Lunch with Katy', url: 'javascript:void(0)', timeStart: '08:45', timeEnd: '09:45' },
-                                { date: '2018-07-26', title: 'Concept review', url: 'javascript:void(0)', timeStart: '15:00', timeEnd: '16:00' },
-                                { date: '2018-07-27', title: 'Swimming Poll', url: 'javascript:void(0)', timeStart: '13:50', timeEnd: '14:20' },
-                                { date: '2018-07-29', title: 'Team Meeting', url: 'javascript:void(0)', timeStart: '17:25', timeEnd: '18:15' },
-                                { date: '2018-08-02', title: 'Dinner with John', url: 'javascript:void(0)', timeStart: '16:25', timeEnd: '18:45' },
-                                { date: '2018-08-13', title: 'Business Meeting', url: 'javascript:void(0)', timeStart: '10:00', timeEnd: '11:00' }
-                            ]
-                        </script>
-                        <script id="clndr_events_template" type="text/x-handlebars-template">
-                            <div class="md-card-toolbar">
-                                <div class="md-card-toolbar-actions">
-                                    <i class="md-icon clndr_add_event material-icons">&#xE145;</i>
-                                    <i class="md-icon clndr_today material-icons">&#xE8DF;</i>
-                                    <i class="md-icon clndr_previous material-icons">&#xE408;</i>
-                                    <i class="md-icon clndr_next material-icons uk-margin-remove">&#xE409;</i>
-                                </div>
-                                <h3 class="md-card-toolbar-heading-text">
 
-                                </h3>
-                            </div>
-                            <div class="clndr_days">
-
-                            </div>
-                            <div class="clndr_events">
-                                <i class="material-icons clndr_events_close_button">&#xE5CD;</i>
-
-                            </div>
-                        </script>
-                    </div>
-                    <div class="uk-modal" id="modal_clndr_new_event">
-                        <div class="uk-modal-dialog">
-                            <div class="uk-modal-header">
-                                <h3 class="uk-modal-title">New Event</h3>
-                            </div>
-                            <div class="uk-margin-bottom">
-                                <label for="clndr_event_title_control">Event Title</label>
-                                <input type="text" class="md-input" id="clndr_event_title_control" />
-                            </div>
-                            <div class="uk-margin-medium-bottom">
-                                <label for="clndr_event_link_control">Event Link</label>
-                                <input type="text" class="md-input" id="clndr_event_link_control" />
-                            </div>
-                            <div class="uk-grid uk-grid-width-medium-1-3 uk-margin-large-bottom" data-uk-grid-margin>
-                                <div>
-                                    <div class="uk-input-group">
-                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
-                                        <label for="clndr_event_date_control">Event Date</label>
-                                        <input class="md-input" type="text" id="clndr_event_date_control" data-uk-datepicker="{format:'YYYY-MM-DD', minDate: '2018-07-08' }">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="uk-input-group">
-                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-clock-o"></i></span>
-                                        <label for="clndr_event_start_control">Event Start</label>
-                                        <input class="md-input" type="text" id="clndr_event_start_control" data-uk-timepicker>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="uk-input-group">
-                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-clock-o"></i></span>
-                                        <label for="clndr_event_end_control">Event End</label>
-                                        <input class="md-input" type="text" id="clndr_event_end_control" data-uk-timepicker>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="uk-modal-footer uk-text-right">
-                                <button type="button" class="md-btn md-btn-flat uk-modal-close">Close</button><button type="button" class="md-btn md-btn-flat md-btn-flat-primary" id="clndr_new_event_submit">Add Event</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-width-large-1-2">
-                <div class="md-card">
-                    <div id="map_users_controls"></div>
-                    <div id="map_users" class="gmap"></div>
-                    <div class="md-card-content">
-                        <ul class="md-list md-list-addon gmap_list" id="map_users_list">
-                            <li data-gmap-lat="37.406267"  data-gmap-lon="-122.06742" data-gmap-user="Ms. Agnes Schmitt MD" data-gmap-user-company="Lynch Inc">
-                                <div class="md-list-addon-element">
-                                    <img class="md-user-image md-list-addon-avatar" src="assets/img/avatars/avatar_01_tn.png" alt=""/>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Ms. Agnes Schmitt MD</span>
-                                    <span class="uk-text-small uk-text-muted">Lynch Inc</span>
-                                </div>
-                            </li>
-                            <li data-gmap-lat="37.379267"  data-gmap-lon="-122.02148" data-gmap-user="Theo Kassulke" data-gmap-user-company="Hilpert-Jacobson">
-                                <div class="md-list-addon-element">
-                                    <img class="md-user-image md-list-addon-avatar" src="assets/img/avatars/avatar_02_tn.png" alt=""/>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Theo Kassulke</span>
-                                    <span class="uk-text-small uk-text-muted">Hilpert-Jacobson</span>
-                                </div>
-                            </li>
-                            <li data-gmap-lat="37.410267"  data-gmap-lon="-122.11048" data-gmap-user="Ena VonRueden" data-gmap-user-company="Bins, Kunze and Reinger">
-                                <div class="md-list-addon-element">
-                                    <img class="md-user-image md-list-addon-avatar" src="assets/img/avatars/avatar_03_tn.png" alt=""/>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Ena VonRueden</span>
-                                    <span class="uk-text-small uk-text-muted">Bins, Kunze and Reinger</span>
-                                </div>
-                            </li>
-                            <li data-gmap-lat="37.397267"  data-gmap-lon="-122.084417" data-gmap-user="Vince Gleason" data-gmap-user-company="Vandervort, Lakin and Grimes">
-                                <div class="md-list-addon-element">
-                                    <img class="md-user-image md-list-addon-avatar" src="assets/img/avatars/avatar_04_tn.png" alt=""/>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Vince Gleason</span>
-                                    <span class="uk-text-small uk-text-muted">Vandervort, Lakin and Grimes</span>
-                                </div>
-                            </li>
-                            <li data-gmap-lat="37.372267"  data-gmap-lon="-122.090417" data-gmap-user="Albertha Prohaska" data-gmap-user-company="Mitchell, Bogan and Bauch">
-                                <div class="md-list-addon-element">
-                                    <img class="md-user-image md-list-addon-avatar" src="assets/img/avatars/avatar_05_tn.png" alt=""/>
-                                </div>
-                                <div class="md-list-content">
-                                    <span class="md-list-heading">Albertha Prohaska</span>
-                                    <span class="uk-text-small uk-text-muted">Mitchell, Bogan and Bauch</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 </div>

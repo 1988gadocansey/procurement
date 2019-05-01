@@ -36,7 +36,11 @@
     <link rel="stylesheet" href="{!! url( 'datatables/css/dataTables.uikit.min.css')  !!}" >
 
     <link rel="stylesheet" href="{!! url('public/assets/css/ie.css')!!}"media="all">
-
+    <style>
+        input{
+            text-transform: uppercase;
+        }
+    </style>
     @yield('css')
 </head>
 <body class="disable_transitions sidebar_main_open sidebar_main_swipe">
@@ -275,7 +279,7 @@
         <ul>
             @if(Auth::check())
             <li class="current_section" title="Dashboard">
-                <a href="index.html">
+                <a href="{{route("home")}}">
                     <span class="menu_icon"><i class="material-icons md-24">home</i></span>
                     <span class="menu_title">Home</span>
                 </a>
@@ -298,8 +302,8 @@
                     <span class="menu_title">Tenders</span>
                 </a>
                 <ul>
-                    <li><a href="page_chat.html">Create Tender</a></li>
-                    <li><a href="page_chat_small.html">View Tenders</a></li>
+                    <li><a href="{{route("make_tender")}}">Create Tender</a></li>
+                    <li><a href="{{route("view_tenders")}}">View Tenders</a></li>
                 </ul>
 
             </li>
@@ -348,7 +352,19 @@
 
 <div id="page_content">
     <div id="page_content_inner">
+        <div class="md-card-content">
+            @if(Session::has('success'))
+                <div style="text-align: center" class="uk-alert uk-alert-success" data-uk-alert="">
+                    {!! Session::get('success') !!}
+                </div>
+            @endif
 
+            @if(Session::has('error'))
+                <div style="text-align: center" class="uk-alert uk-alert-danger" data-uk-alert="">
+                    {!! Session::get('error') !!}
+                </div>
+            @endif
+        </div>
         @yield('content')
 
     </div>

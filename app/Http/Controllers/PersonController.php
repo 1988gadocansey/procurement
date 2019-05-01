@@ -9,7 +9,11 @@ class PersonController extends Controller
 {
 
 
-
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
+    }
     public function create(HelpController $help)
     {
         $regions = $help->getRegions();
@@ -20,12 +24,12 @@ class PersonController extends Controller
     {
         $this->validate($request, [
             'entity_type' => 'required',
-            'business_name' => 'required|unique:people',
-            'telephone' => 'required|unique:people',
-            'registration_number' => 'required',
-            'year_of_registration' => 'required',
-            'email' => 'required',
-            'physical_address' => 'required',
+
+            'telephone' => 'numeric|required|unique:people',
+            'registration' => 'required',
+            'year' => 'required',
+            'email' => 'email|required|unique:people',
+            'location' => 'required',
             'district' => 'required',
 
 
@@ -67,6 +71,9 @@ class PersonController extends Controller
             $people->ghana_post_gps = $gps;
 
             $people->save();
+
+        return redirect("/home")->with("success", "Company info created");
+
 
 
 

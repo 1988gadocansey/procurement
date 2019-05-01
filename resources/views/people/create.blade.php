@@ -13,6 +13,22 @@
                 {!! Session::get('error') !!}
             </div>
         @endif
+            <div>
+                <!-- if there are login errors, show them here -->
+                @if (count($errors) > 0)
+
+                    <div class="uk-form-row">
+                        <div class="alert alert-danger" style="background-color: red;color: white">
+
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li> {!!  $error  !!} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+            </div>
 
 
     </div>
@@ -67,7 +83,7 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Year of Registration :</label><input type="text" id="year" name="year" v-form-ctrl  class="md-input"    v-model="year"   required    /><span class="md-input-bar"></span></div>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_skype">Year of Registration :</label><input type="number" id="year" name="year" v-form-ctrl  class="md-input"    v-model="year"   required    /><span class="md-input-bar"></span></div>
                                         <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.year.$error.required">Year of registration is required</p>
 
                                     </div>

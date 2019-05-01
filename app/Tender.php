@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Entity extends Model
+class Tender extends Model
 {
     //
     /**
@@ -13,17 +13,13 @@ class Entity extends Model
      *
      * @var string
      */
-    protected $table = 'people';
+    protected $table = 'tenders';
 
     protected $primaryKey="id";
     protected $guarded = ['id'];
 
-    public function districts(){
-        return $this->belongsTo('App\District', "district","id");
-    }
     public function user(){
         return $this->belongsTo('App\User', "user","id");
     }
-
 
 }

@@ -42,11 +42,19 @@
                             Home
                         </a>
                     </li>
-                    <li>
-                        <a href="#sect-features">
-                            Getting started
-                        </a>
+                    <li data-uk-dropdown class="uk-hidden-small">
+                        <a href="layout_top_menu.html#"><i class="material-icons">&#xE8D2;</i><span>PROCUREMENT LINKS</span></a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+
+                                <li><a href="forms_advanced.html">National</a></li>
+                                <li><a href="{!! url('/register/buyer') !!}">Africa</a></li>
+                                <li><a href="{!! url('/register/buyer') !!}">International</a></li>
+
+                            </ul>
+                        </div>
                     </li>
+
                     <li>
                         <a href="#sect-gallery">
                             List of Opportunities
@@ -58,19 +66,22 @@
                             Find tenders
                         </a>
                     </li>
-                    <li>
-                        <a href="#sect-team">
-                            Manage Field Operations
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#sect-team">
-                            Resources
-                        </a>
+
+                    <li data-uk-dropdown class="uk-hidden-small">
+                        <a href="layout_top_menu.html#"><i class="material-icons">&#xE8D2;</i><span>RESOURCES</span></a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-nav-dropdown">
+
+                                <li><a href="forms_advanced.html">Policies</a></li>
+                                <li><a href="{!! url('/register/buyer') !!}">Regulations</a></li>
+                                <li><a href="{!! url('/register/buyer') !!}">Manuals</a></li>
+
+                            </ul>
+                        </div>
                     </li>
                     <li>
                         <a href="{!! url('/register') !!}">
-                           Register
+                          Sign Up
                         </a>
                     </li>
                    {{-- <li data-uk-dropdown class="uk-hidden-small">
@@ -88,7 +99,7 @@
 
                     <li>
                         <a href="{{url("/login")}}">
-                            Login
+                           Sign In
                         </a>
                     </li>
 
@@ -143,7 +154,7 @@
 <section class="banner" id="sect-overview">
     <div data-uk-slideshow="{animation: 'swipe'}" data-uk-parallax="{yp: '25', velocity: '0.4'}">
         <ul class="uk-slideshow">
-            <li style="background-image: url('assets/img/slider/car.jpg')">
+            <li style="background-image: url('{!! url( "public/landing/assets/assets/img/slider/car.jpg")!!}')">
                 <div class="uk-container uk-container-center">
                     <div class="slide_content_a">
                         <h2 class="slide_header">Slide Heading</h2>
@@ -152,7 +163,7 @@
                             dolore enim eos esse harum officia pariatur porro quas quia, quidem saepe similique
                             tempora. Maxime molestias odio voluptate.
                         </p>
-                        <a href="http://themeforest.net/item/altair-material-design-premium-template/12190654?ref=tzd" class="md-btn md-btn-large md-btn-danger">Purchase NOW!</a>
+                        <a href="http://themeforest.net/item/altair-material-design-premium-template/12190654?ref=tzd" class="md-btn md-btn-large md-btn-danger">REGISTER NOW!</a>
                     </div>
                 </div>
             </li>
@@ -263,7 +274,7 @@
                 <ul class="uk-grid uk-grid-small uk-slider uk-grid-width-medium-1-3 uk-grid-width-large-1-4">
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image01.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image01.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 1</h4>
                                 Lorem ipsum dolor sit amet, consectetur.
@@ -272,7 +283,7 @@
                     </li>
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image11.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image11.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 2</h4>
                                 Lorem ipsum dolor sit amet, consectetur.
@@ -281,7 +292,7 @@
                     </li>
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image07.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image07.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 3</h4>
                                 Lorem ipsum dolor sit amet, consectetur.
@@ -290,7 +301,7 @@
                     </li>
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image08.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image08.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 4</h4>
                                 Lorem ipsum dolor sit amet, consectetur.
@@ -299,7 +310,7 @@
                     </li>
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image02.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image02.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 5</h4>
                                 Lorem ipsum dolor sit amet, consectetur.
@@ -308,7 +319,7 @@
                     </li>
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image14.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image14.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 6</h4>
                                 Lorem ipsum dolor sit amet, consectetur.
@@ -317,7 +328,7 @@
                     </li>
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image06.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image06.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 7</h4>
                                 Lorem ipsum dolor sit amet, consectetur.
@@ -326,7 +337,7 @@
                     </li>
                     <li>
                         <div class="md-card">
-                            <div class="md-card-content padding-reset"><img src="assets/img/gallery/Image12.jpg" alt=""></div>
+                            <div class="md-card-content padding-reset"><img src="{!! url( "public/landing/assets/img/gallery/Image12.jpg")!!}" alt=""></div>
                             <div class="md-card-footer">
                                 <h4 class="md-card-footer-head">Heading 8</h4>
                                 Lorem ipsum dolor sit amet, consectetur.

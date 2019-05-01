@@ -134,20 +134,20 @@
                                         <input class="md-input" type="text" id="register_email" name="register_email" />
                                     </div>
                                     <div class="uk-margin-medium-top">
-                                        <a href="index.html" class="md-btn md-btn-primary md-btn-block md-btn-large">Sign Up</a>
+                                        <a href="{{route("register")}}" class="md-btn md-btn-primary md-btn-block md-btn-large">Sign Up</a>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="uk-margin-top uk-text-center">
-                            <a href="login_v2.html#" id="signup_form_show">Create an account</a>
+                            <a href="{{route("register")}}" id="signup_form_show">Create an account</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <center><small>Powered by A&G Microsystems - Cape Coast 0243348522</small></center>
 </div>
 
 <!-- common functions -->
