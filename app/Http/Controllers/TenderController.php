@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class TenderController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *

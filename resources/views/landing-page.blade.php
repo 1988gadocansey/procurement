@@ -163,7 +163,7 @@
                             dolore enim eos esse harum officia pariatur porro quas quia, quidem saepe similique
                             tempora. Maxime molestias odio voluptate.
                         </p>
-                        <a href="http://themeforest.net/item/altair-material-design-premium-template/12190654?ref=tzd" class="md-btn md-btn-large md-btn-danger">REGISTER NOW!</a>
+                        <a href="{{route("register")}}" class="md-btn md-btn-large md-btn-danger">REGISTER NOW!</a>
                     </div>
                 </div>
             </li>
