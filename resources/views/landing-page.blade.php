@@ -154,7 +154,7 @@
 <section class="banner" id="sect-overview">
     <div data-uk-slideshow="{animation: 'swipe'}" data-uk-parallax="{yp: '25', velocity: '0.4'}">
         <ul class="uk-slideshow">
-            <li style="background-image: url('{!! url( "public/landing/assets/assets/img/slider/car.jpg")!!}')">
+            <li style="background-image: url('{!! url( "public/landing/assets/img/slider/car.jpg")!!}')">
                 <div class="uk-container uk-container-center">
                     <div class="slide_content_a">
                         <h2 class="slide_header">Slide Heading</h2>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
             </li>
-            <li style="background-image: url('{!! url( "public/landing/assets/assets/img/slider/stats.jpg")!!}')">
+            <li style="background-image: url('{!! url( "public/landing/assets/img/slider/stats.jpg")!!}')">
                 <div class="uk-container uk-container-center">
                     <div class="slide_content_c">
                         <h2 class="slide_header">Slide Heading</h2>

@@ -312,7 +312,7 @@
 
 
             <li title="Chats">
-                <a href="index.html#">
+                <a href="#">
                     <span class="menu_icon"><i class="material-icons md-24">&#xE53E;</i></span>
                     <span class="menu_title">Opportunities</span>
                 </a>
