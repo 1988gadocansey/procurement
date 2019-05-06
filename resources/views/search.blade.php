@@ -155,7 +155,7 @@
 <div class="" style="margin-left: 180px"  >
 
 
-        <form action=" "  method="get" accept-charset="utf-8" novalidate id="group">
+        <form action="{{route("search.store")}}"  method="post" accept-charset="utf-8" novalidate id="group">
             {!!  csrf_field()  !!}
             <div class="uk-grid" data-uk-grid-margin>
                 <div class="uk-width-medium-1-3">
@@ -191,16 +191,27 @@
 
 
 
+@if(Request::isMethod('post'))
 <div class="uk-width-xLarge-1-1">
     <div class="md-card">
         <div class="md-card-content">
             <div class="uk-overflow-container" id='print'>
-
+               @if(!empty($data))
+                @foreach($data as $row)
+                    <div>
+                        {{$row->type}}
+                    </div>
+                @endforeach
+                   @else
+                    <p>No result found</p>
+                   @endif
             </div>
         </div>
 
     </div>
 </div>
+@endif
+
 
 
 
