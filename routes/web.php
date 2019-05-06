@@ -50,7 +50,8 @@ Route::get('/home', 'HomeController@index')->name('home');
    * Opportunities routes
    */
 
-    Route::resource('opportunities','OpporthunityController');
+    Route::resource('opportunities','OpportunityController');
+    Route::resource('search','SearchController');
 //    Route::get('/tender/create', 'TenderController@create')->name('make_tender');
 //    Route::get('/tender/{{tender}}/show', 'TenderController@show')->name('show_tender');
 //    Route::get('/tender/{{tender}}/edit', 'TenderController@edit')->name('edit_tender');

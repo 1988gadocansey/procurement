@@ -62,7 +62,7 @@
                     </li>
 
                     <li>
-                        <a href="#sect-team">
+                        <a href="{{route("opportunities.create")}}">
                             Find tenders
                         </a>
                     </li>
