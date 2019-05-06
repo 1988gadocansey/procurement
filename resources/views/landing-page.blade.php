@@ -62,7 +62,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route("opportunities.create")}}">
+                        <a href="{{route("search.index")}}">
                             Find tenders
                         </a>
                     </li>
