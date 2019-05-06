@@ -11,7 +11,7 @@ class HelpController extends Controller
 
      public function getRegions(){
 
-         $regions= Region::orderBy("NAME")->pluck("NAME","ID");
+         $regions= Region::orderBy("NAME")->pluck("NAME","ID")->all();
         return  $regions;
      }
     public function fetchDistricts(Request $request){

@@ -66,7 +66,7 @@
                                 <div class="parsley-row">
                                     <div class="uk-input-group">
 
-                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Osikani :</label><input type="text" id="type" name="type" class="md-input"   required="required"     v-model="type"  v-form-ctrl><span class="md-input-bar"></span></div>
+                                        <div class="md-input-wrapper md-input-filled"><label for="wizard_referer">Type :</label><input type="text" id="type" name="type" class="md-input"   required="required"     v-model="type"  v-form-ctrl><span class="md-input-bar"></span></div>
                                         <p  class=" uk-text-danger uk-text-small  "   v-if="updateForm.type.$error.required">type is required</p>
                                     </div>
                                 </div>

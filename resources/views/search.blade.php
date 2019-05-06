@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" href="{!! url( "public/landing/assets/img/favicon-32x32.png")!!}" sizes="16x16">
     <link rel="icon" type="image/png" href="{!! url( "public/landing/assets/img/favicon-32x32.png")!!}" sizes="32x32">
     <link rel="icon" type="image/png" href="{!! url( "public/landing/assets/img/favicon-32x32.png")!!}" sizes="32x32">
+    <link rel="stylesheet" href="{!! url('public/assets/css/select2.min.css') !!}" media="all">
 
     <title>Adongo Procurement</title>
 
@@ -151,7 +152,7 @@
     </div>
 </div>
 
-<div class=""  >
+<div class="" style="margin-left: 180px"  >
 
 
         <form action=" "  method="get" accept-charset="utf-8" novalidate id="group">
@@ -163,18 +164,23 @@
                 </div>
                 <div class="uk-width-medium-1-5">
                     <div class="uk-margin-small-top">
-                        {!! Form::select('program',
-                    (['' => 'All regions'] +$regions ),
+                        {!! Form::select('region',
+                    (['' => 'All regions'] +$region ),
                       old("program",""),
                         ['class' => 'md-input parent','id'=>"parent",'placeholder'=>'select regions'] )  !!}
                     </div>
                 </div>
+                <div class="uk-width-medium-1-5 metro">
+                    <div class="uk-margin-small-top">
+                        {!! Form::select('district',[''=>'--- Select District ---'],null,['id'=>'district',"v-model"=>"district","v-form-ctrl"=>"","style"=>"","v-select"=>"district","required"=>""]) !!}
+
+
+                    </div>
+                </div>
                 <div class="uk-width-medium-1-5">
                     <div class="uk-margin-small-top">
-                        {!! Form::select('level',
-                    (['' => 'All levels'] +$regions ),
-                      old("level",""),
-                        ['class' => 'md-input parent','id'=>"parent",'placeholder'=>'select level'] )  !!}
+                        <button class="md-btn  md-btn-small md-btn-success uk-margin-small-top" type="submit"><i class="material-icons">search</i></button>
+
                     </div>
                 </div>
             </div>
@@ -246,24 +252,52 @@
 <!-- altair common functions/helpers -->
 <script src="{!! url( "public/landing/assets/js/altair_lp_common.js")!!}"></script>
 
-<script>
-    $(function() {
-        if(isHighDensity()) {
+<script src="{!! url('public/assets/js/select2.full.min.js') !!}"></script>
 
-            $.getScript( "{!! url( 'public/landing/assets/custom/dense.min.js')!!}", function(data) {
-                // enable hires images
-                if (typeof $.fn.dense !== "undefined") {
-                    $('img')
-                    // set resolution cap at "2"
-                        .attr('data-dense-cap',2)
-                        .dense({
-                            glue: "@",
-                            ping: false
-                        });
-                }
-            });
-        }
+<script>
+    $(document).ready(function(){
+        $('select').select2({ width: "resolve" });
+
+
     });
+
+
+</script>
+<script type="text/javascript">
+    $('.metro').hide();
+
+    $("select[name='region']").change(function(){
+
+
+        var region= $(this).val();
+
+        var token = $("input[name='_token']").val();
+
+        $.ajax({
+
+            url: "<?php echo route('ajax_district') ?>",
+
+            method: 'POST',
+
+            data: {region:region, _token:token},
+
+
+            success: function(data) {
+
+
+
+                $('.metro').show();
+                $("select[name='district']").html('');
+
+                $("select[name='district']").html(data.options);
+
+            }
+
+        });
+
+    });
+
+
 </script>
 
 </body>

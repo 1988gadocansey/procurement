@@ -16,7 +16,7 @@ class SearchController extends  Controller
 
     public function  index(Request $request, HelpController $help){
         $regions=$help->getRegions();
-        return view("search")->with("regions",$regions);
+        return view("search")->with("region",$regions);
 
     }
 }
